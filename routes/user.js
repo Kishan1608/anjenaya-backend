@@ -40,7 +40,7 @@ router.post('/register', async( req, res ) => {
 
         const token = jwt.sign({
             id: savedUser._id
-        }, 'IZyvra)2H:ixd~,t%K_>~wg?%}izqc_|Fn1kU5\h8F[-C$t,u:!D[s\F7m\Hm+mt.X,4;|gr[Gm9?=vIE/S]S*z:!Hr.H"{2r>h=');
+        }, process.env.JWT_SECRET);
 
         res.cookie("token", token,{httpOnly: true, 
             sameSite: process.env.NODE_ENV === "development"
@@ -80,7 +80,7 @@ router.post('/login', async(req, res) => {
 
         const token = jwt.sign({
             id: user._id
-        }, 'IZyvra)2H:ixd~,t%K_>~wg?%}izqc_|Fn1kU5\h8F[-C$t,u:!D[s\F7m\Hm+mt.X,4;|gr[Gm9?=vIE/S]S*z:!Hr.H"{2r>h=');
+        }, process.env.JWT_SECRET);
 
         res.cookie("token", token,{
             httpOnly: true, 
